@@ -70,5 +70,5 @@ Lets swap the production with stage app
  `az webapp deployment slot swap --resource-group letschat --name letschaton --slot stage --target-slot production`
  
 ## Clean Up
-Delete everything your created sa far on Azure
+Clean up by deleting resource group. It will delete all resources created under it.
 `az group delete --name letschat`
