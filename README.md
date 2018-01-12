@@ -7,7 +7,12 @@ A self-hosted chat app for small teams built by [Security Compass][seccom].
 
 
 # Hands on Lab
+### Prerequisites 
 
+ 1. Install [Visual Studio Code](https://code.visualstudio.com/)
+ 2. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and to login '`az login` follow on screen instructions.
+ 3.  Create resource group for this lab `az group  create -l eastus2 -n letschat -o table` 
+ 4.  Install [Nodejs](https://nodejs.org/en/download/) on your local machine 
 ## Part 1: Deploy Application on local machine
  - Clone or download this repository
  - Run npm install to install all required nodejs packages
@@ -22,7 +27,7 @@ A self-hosted chat app for small teams built by [Security Compass][seccom].
  ## Part 2: Create App Service Web App 
  Use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to execute following commands.
  
-1. Create a resource group : `az group  create -l eastus2 -n letschat -o table` This create
+1. Create a resource group : `az group  create -l eastus2 -n letschat -o table` 
 2. Create a App Service Plan: `az appservice  plan create -g letschat --name ASPlan --location eastus --sku S1 -o table `
 3. Create a Web App `az webapp create --name letschaton -g letschat --plan ASPlan  --deployment-local-git --runtime "node|6.2" -o table `
 4. Set a environment variable thats requried to run the app: `az webapp config appsettings set --name letschaton -g letschat --settings MONGODB_URI=mongodb://your-connection-string` This step sets MONGODB_URI enviroment variable 
@@ -45,7 +50,7 @@ Now once you are able to visit the app in stage and test its working, its time t
  3. To browse the stage app run `az webapp browse -g letschat -n letschaton -s stage` You should notice that the stage is swapped with production app.
 
 ## Part 5: Update the app and try swap again
-We want enable file uploads on our chat server. Lets add new empty file in root app your app and name it settings.yml. We want to achieve this [Before](//) and [After](//)
+We want enable file uploads on our chat server. Lets add new empty file in root app your app and name it settings.yml. We want to achieve this [Before](https://github.com/krishnaji/lets-chat/blob/master/Before.gif) and [After](https://github.com/krishnaji/lets-chat/blob/master/After.gif)
 Add following to your settings.yml file. 
 ```
 files:
