@@ -10,15 +10,17 @@ A self-hosted chat app for small teams built by [Security Compass][seccom].
 ### Prerequisites 
 
  1. Install [Visual Studio Code](https://code.visualstudio.com/)
- 2. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and to login '`az login` follow on screen instructions.
- 3.  Create resource group for this lab `az group  create -l eastus2 -n letschat -o table` 
- 4.  Install [Nodejs](https://nodejs.org/en/download/) on your local machine 
+ 2. Install [Nodejs](https://nodejs.org/en/download/) on your local machine 
+ 3. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and to login `az login` follow on screen instructions.
+ 4.  Create resource group for this lab `az group  create -l eastus2 -n letschat -o table` 
+ 5. Set up a deployment account that will be used to push code to app service `az webapp deployment user set --user-name <user> --password <password>`. This username and password will be the same across all apps in all subscriptions associated with your Microsoft Azure account
+ 
 ## Part 1: Deploy Application on local machine
  - Clone or download this repository
  - Run npm install to install all required nodejs packages
  - [Create](https://portal.azure.com/#create/Microsoft.DocumentDB) a blank Azure CosmosDB account. Make sure to select API type as MongoDB. 
- - Get mongodb:// database endpoint link from Settings section
- - On your local machine Set or export enviroment variable MONGODB_URI=mongodb://your-connection-string from above step
+ - Get connection string mongodb:// database endpoint link from Quick Start for Node.Js section
+ - On your local machine Set or export environment variable MONGODB_URI=mongodb://your-connection-string from above step
  - Run `npm install` 
  - Run `npm start`
  - Visit http://localhost:5000
@@ -26,12 +28,12 @@ A self-hosted chat app for small teams built by [Security Compass][seccom].
  
  ## Part 2: Create App Service Web App 
  Use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to execute following commands.
- 
+ Below 1st and 2nd  steps are optional, if you already have resource group and/or App service plan created
 1. Create a resource group : `az group  create -l eastus2 -n letschat -o table` 
 2. Create a App Service Plan: `az appservice  plan create -g letschat --name ASPlan --location eastus --sku S1 -o table `
 3. Create a Web App `az webapp create --name letschaton -g letschat --plan ASPlan  --deployment-local-git --runtime "node|6.2" -o table `
-4. Set a environment variable thats requried to run the app: `az webapp config appsettings set --name letschaton -g letschat --settings MONGODB_URI=mongodb://your-connection-string` This step sets MONGODB_URI enviroment variable 
-5. To browse the app run `az webapp browse -g letschat -n letschaton -o table` You will find and empty default app running there. This is where your production app will run.
+4. Set a environment variable thats required to run the app: `az webapp config appsettings set --name letschaton -g letschat --settings MONGODB_URI=mongodb://your-connection-string` This step sets MONGODB_URI environment variable in application settings
+6. To browse the app run `az webapp browse -g letschat -n letschaton -o table` You will find and empty default app running there. This is where your production app will run.
 
 ## Part 3: Deployment Slots
 Now lets create deployment slot and try deploying code to it and finally swap the slots.
