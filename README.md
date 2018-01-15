@@ -6,7 +6,7 @@ A self-hosted chat app for small teams built by [Security Compass][seccom].
 
 
 
-# Hands on Lab
+# 1: Hands on Lab
 ### Prerequisites 
 
  1. Install [Visual Studio Code](https://code.visualstudio.com/)
@@ -68,7 +68,11 @@ Time to push the code to your stage application. (`git push stage master`)
 Browse your stage app and ensure that the files upload is enabled.
 Lets swap the production with stage app
  `az webapp deployment slot swap --resource-group letschat --name letschaton --slot stage --target-slot production`
- 
+
+## [2: Hands on Lab - CICD with VSTS](https://github.com/krishnaji/CICDLabsHOL/blob/master/README.md)
+
 ## Clean Up
+
 Clean up by deleting resource group. It will delete all resources created under it.
 `az group delete --name letschat`
+Also if you followed Hands on Lab for CICD you have delete prject and account on VSTS.
