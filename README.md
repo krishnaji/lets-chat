@@ -70,7 +70,7 @@ Browse your stage app and ensure that the files upload is enabled.
 Lets swap the production with stage app
  `az webapp deployment slot swap --resource-group letschat --name letschaton --slot stage --target-slot production`
 
-## [2: Hands on Lab - CICD with VSTS](https://github.com/krishnaji/CICDLabsHOL/blob/master/README.md)
+
 
 ## Clean Up
 
