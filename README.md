@@ -10,7 +10,8 @@ A self-hosted chat app for small teams built by [Security Compass][seccom].
 ### Prerequisites 
 
  1. Install [Visual Studio Code](https://code.visualstudio.com/)
- 2. Install [Nodejs](https://nodejs.org/en/download/) on your local machine 
+ 2. Install [Nodejs](https://nodejs.org/en/download/) on your local machine
+ 3. Install [Git](https://git-scm.com)
  3. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and to login `az login` follow on screen instructions.
  4.  Create resource group for this lab `az group  create -l eastus2 -n letschat -o table` 
  5. Set up a deployment account that will be used to push code to app service `az webapp deployment user set --user-name <user> --password <password>`. This username and password will be the same across all apps in all subscriptions associated with your Microsoft Azure account
