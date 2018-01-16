@@ -76,4 +76,4 @@ Lets swap the production with stage app
 
 Clean up by deleting resource group. It will delete all resources created under it.
 `az group delete --name letschat`
-Also if you followed Hands on Lab for CICD you have delete prject and account on VSTS.
+
