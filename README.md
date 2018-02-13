@@ -77,3 +77,4 @@ Lets swap the production with stage app
 Clean up by deleting resource group. It will delete all resources created under it.
 `az group delete --name letschat`
 
+Now implement [CICD pipeline](https://github.com/krishnaji/CICDLabsHOL)
